@@ -1,0 +1,6 @@
+framework module Pods_shout {
+  umbrella header "Pods-shout-umbrella.h"
+
+  export *
+  module * { export * }
+}
