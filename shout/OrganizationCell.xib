@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="639" height="422"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ahQ-fn-ldh" id="DfY-kg-CCT">
-                <rect key="frame" x="0.0" y="0.0" width="639" height="422"/>
+                <rect key="frame" x="0.0" y="0.0" width="639" height="421.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1s-Ym-2q0">
@@ -57,7 +57,6 @@
                             <constraint firstAttribute="height" constant="50" id="28n-7i-PL8"/>
                             <constraint firstItem="avO-4g-yQd" firstAttribute="top" secondItem="zvK-NB-ew4" secondAttribute="top" constant="15" id="5qk-No-99i"/>
                             <constraint firstItem="avO-4g-yQd" firstAttribute="leading" secondItem="zvK-NB-ew4" secondAttribute="leading" id="DZi-TH-qUn"/>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="YqU-X4-n2t"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dbk-fx-iVX">
@@ -72,26 +71,44 @@
                         </subviews>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.47450980390000003" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="0RA-OA-joS"/>
                             <constraint firstItem="MR5-o6-Yz7" firstAttribute="leading" secondItem="Dbk-fx-iVX" secondAttribute="leading" id="2U4-8W-puM"/>
                             <constraint firstAttribute="height" constant="50" id="R5z-Kk-oMg"/>
                             <constraint firstItem="MR5-o6-Yz7" firstAttribute="top" secondItem="Dbk-fx-iVX" secondAttribute="top" constant="15" id="aoW-GE-vaa"/>
                         </constraints>
                     </view>
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yog-cP-6vO">
+                        <rect key="frame" x="560" y="18" width="71" height="30"/>
+                        <state key="normal" title="Favorite"/>
+                        <connections>
+                            <action selector="onFavorite:" destination="ahQ-fn-ldh" eventType="touchUpInside" id="svh-cd-Weg"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iMz-ZO-vJI">
+                        <rect key="frame" x="496" y="18" width="46" height="30"/>
+                        <state key="normal" title="Follow"/>
+                        <connections>
+                            <action selector="onFollow:" destination="ahQ-fn-ldh" eventType="touchUpInside" id="ohA-CW-ZvZ"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Zwv-HT-7KJ" firstAttribute="top" secondItem="K1s-Ym-2q0" secondAttribute="bottom" constant="20" id="3nJ-y1-6hI"/>
                     <constraint firstItem="Zwv-HT-7KJ" firstAttribute="leading" secondItem="K1s-Ym-2q0" secondAttribute="leading" id="Mki-lk-QpI"/>
                     <constraint firstItem="zvK-NB-ew4" firstAttribute="leading" secondItem="Zwv-HT-7KJ" secondAttribute="leading" id="Nq9-If-SJh"/>
                     <constraint firstItem="K1s-Ym-2q0" firstAttribute="leading" secondItem="DfY-kg-CCT" secondAttribute="leading" constant="20" id="Nqc-j5-Qmq"/>
+                    <constraint firstItem="Yog-cP-6vO" firstAttribute="top" secondItem="DfY-kg-CCT" secondAttribute="top" constant="10" id="cOO-I5-xwv"/>
                     <constraint firstItem="Dbk-fx-iVX" firstAttribute="leading" secondItem="zvK-NB-ew4" secondAttribute="leading" id="dxJ-kC-zmT"/>
+                    <constraint firstItem="Yog-cP-6vO" firstAttribute="leading" secondItem="iMz-ZO-vJI" secondAttribute="trailing" constant="15" id="g6V-9D-tYa"/>
                     <constraint firstItem="Dbk-fx-iVX" firstAttribute="top" secondItem="zvK-NB-ew4" secondAttribute="bottom" constant="25" id="hEP-vD-WxY"/>
+                    <constraint firstItem="iMz-ZO-vJI" firstAttribute="top" secondItem="DfY-kg-CCT" secondAttribute="top" constant="10" id="nmY-J7-6pa"/>
                     <constraint firstItem="zvK-NB-ew4" firstAttribute="top" secondItem="Zwv-HT-7KJ" secondAttribute="bottom" constant="8" id="o01-Vw-ZmG"/>
                     <constraint firstItem="K1s-Ym-2q0" firstAttribute="top" secondItem="DfY-kg-CCT" secondAttribute="top" constant="20" id="uti-7i-5dm"/>
+                    <constraint firstAttribute="trailing" secondItem="Yog-cP-6vO" secondAttribute="trailing" constant="20" id="vLo-TV-oxQ"/>
                     <constraint firstAttribute="bottom" secondItem="Dbk-fx-iVX" secondAttribute="bottom" constant="100" id="xIb-JO-uyA"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="favoriteButton" destination="Yog-cP-6vO" id="bDF-Qh-cD9"/>
                 <outlet property="negativeLabel" destination="MR5-o6-Yz7" id="5Xl-4E-EwV"/>
                 <outlet property="negativeView" destination="Dbk-fx-iVX" id="BRt-xR-v1x"/>
                 <outlet property="orgNameLabel" destination="K1s-Ym-2q0" id="maq-ec-Jbm"/>
@@ -99,6 +116,7 @@
                 <outlet property="positiveView" destination="zvK-NB-ew4" id="XXM-0g-FyO"/>
                 <outlet property="ratingLabel" destination="DRZ-ti-Fso" id="RUo-FN-ies"/>
                 <outlet property="ratingView" destination="Zwv-HT-7KJ" id="GjX-JV-ryj"/>
+                <outlet property="watchButton" destination="iMz-ZO-vJI" id="ohn-J2-EUq"/>
             </connections>
             <point key="canvasLocation" x="-76.5" y="422"/>
         </tableViewCell>

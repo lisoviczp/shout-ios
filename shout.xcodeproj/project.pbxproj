@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B3626C31ED64F4500891171 /* GenericCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3626C21ED64F4500891171 /* GenericCell.swift */; };
+		4B3626C51ED660E500891171 /* OrganizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3626C41ED660E500891171 /* OrganizationViewController.swift */; };
 		4B39E90D1ED21D5500C77303 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B39E90C1ED21D5500C77303 /* AppDelegate.swift */; };
 		4B39E9141ED21D5500C77303 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B39E9121ED21D5500C77303 /* Main.storyboard */; };
 		4B39E9161ED21D5500C77303 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B39E9151ED21D5500C77303 /* Assets.xcassets */; };
@@ -41,6 +43,8 @@
 
 /* Begin PBXFileReference section */
 		2C6BF6D4DCE402A5D5F2B70E /* Pods-shout.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shout.release.xcconfig"; path = "Pods/Target Support Files/Pods-shout/Pods-shout.release.xcconfig"; sourceTree = "<group>"; };
+		4B3626C21ED64F4500891171 /* GenericCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericCell.swift; sourceTree = "<group>"; };
+		4B3626C41ED660E500891171 /* OrganizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrganizationViewController.swift; sourceTree = "<group>"; };
 		4B39E9091ED21D5500C77303 /* shout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = shout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B39E90C1ED21D5500C77303 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B39E9131ED21D5500C77303 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -130,6 +134,7 @@
 				4B39E91A1ED21D5500C77303 /* Info.plist */,
 				4B39E9341ED21F8200C77303 /* ReviewCell.xib */,
 				4B39E9361ED21FA200C77303 /* ReviewCell.swift */,
+				4B3626C41ED660E500891171 /* OrganizationViewController.swift */,
 				4B90A9C51ED4D7C700F35919 /* OrganizationCell.swift */,
 				4B90A9C71ED4D7D700F35919 /* OrganizationCell.xib */,
 				4B90A9C91ED4E71100F35919 /* ContainerTabBarViewController.swift */,
@@ -137,6 +142,7 @@
 				4BABE2FB1ED504A60076AD3B /* OrgSelectViewController.swift */,
 				4BABE2FD1ED5177F0076AD3B /* OrgOverviewCell.xib */,
 				4BABE2FF1ED517960076AD3B /* OrgOverviewCell.swift */,
+				4B3626C21ED64F4500891171 /* GenericCell.swift */,
 			);
 			path = shout;
 			sourceTree = "<group>";
@@ -322,12 +328,14 @@
 				4BABE3001ED517960076AD3B /* OrgOverviewCell.swift in Sources */,
 				4BABE2FC1ED504A60076AD3B /* OrgSelectViewController.swift in Sources */,
 				4B39E9331ED21F2200C77303 /* NotificationsViewController.swift in Sources */,
+				4B3626C51ED660E500891171 /* OrganizationViewController.swift in Sources */,
 				4B39E9311ED21F1600C77303 /* NewsViewController.swift in Sources */,
 				4BB2181F1ED221950014C312 /* HomeViewController.swift in Sources */,
 				4BB218211ED221C80014C312 /* ExploreViewController.swift in Sources */,
 				4B90A9CA1ED4E71100F35919 /* ContainerTabBarViewController.swift in Sources */,
 				4B90A9C61ED4D7C700F35919 /* OrganizationCell.swift in Sources */,
 				4B39E9371ED21FA200C77303 /* ReviewCell.swift in Sources */,
+				4B3626C31ED64F4500891171 /* GenericCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

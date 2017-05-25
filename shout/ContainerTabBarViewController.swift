@@ -14,12 +14,25 @@ class ContainerTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print("calling at the beginning...")
         Shout.client.getCompanies({ json in
-          print("Calling getCompanies from Swift...")
-          print(json)
-          Shout.session.companies = json["data"].array!
+          Shout.session.companies = json["companies"].array!
         })
+
+        Shout.client.getReviewOptions({ json in
+          Shout.session.reviewReasons = json["reasons"].array!
+          Shout.session.reviewCategories = json["categories"].array!
+
+        })
+
+        print("calling reviews at the beginning...")
+        // Shout.client.getAllReviews({ json in
+        //   print("Calling getAllReviews from Swift...")
+        //   print(json)
+        //   Shout.session.allReviews = json["reviews"].array!
+        // })
+
+
+
         self.viewControllers![0].tabBarItem.image = FAKFontAwesome.homeIcon(withSize: 20).image(with: CGSize(width: 20.0, height: 20.0))
         self.viewControllers![1].tabBarItem.image = FAKFontAwesome.calendarIcon(withSize: 20).image(with: CGSize(width: 20.0, height: 20.0))
         self.viewControllers![2].tabBarItem.image = FAKFontAwesome.plusSquareOIcon(withSize: 20).image(with: CGSize(width: 20.0, height: 20.0))

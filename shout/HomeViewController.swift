@@ -28,10 +28,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITextViewDeleg
         // need these to make the cell height adjust to the content, provided each text box is bound by constraints to its cell
         self.tableView.estimatedRowHeight = 60
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        // self.tableView.layoutIfNeeded()
-        // self.tableView.reloadData()
 
-        self.refresh()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -39,7 +36,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITextViewDeleg
     }
 
     func refresh(_ refreshControl: UIRefreshControl? = nil) {
+      print("calling reviews at the beginning...")
+      Shout.client.getRelevantReviews({ json in
+        Shout.session.relevantReviews = json["reviews"].array!
         refreshControl?.endRefreshing()
+        self.tableView.layoutIfNeeded()
+        self.tableView.reloadData()
+      })
     }
 
 
@@ -49,16 +52,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITextViewDeleg
 
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//            return Wydo.session.days.count
-        return 10
+        return Shout.session.relevantReviews.count
     }
 
 
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//            let cellJSON = Wydo.session.review[indexPath.row]
-        self.sampleJSON["body"] = "ayy whassup"
-        var cellJSON = self.sampleJSON
+        // self.sampleJSON["body"] = "ayy whassup"
+        // var cellJSON = self.sampleJSON
+        let cellJSON = Shout.session.relevantReviews[indexPath.row]
 
         var reviewCell = Bundle(for:object_getClass(self)).loadNibNamed("ReviewCell", owner: nil, options: nil)![0] as! ReviewCell
         reviewCell.layoutMargins = UIEdgeInsets.zero

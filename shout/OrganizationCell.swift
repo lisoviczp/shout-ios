@@ -18,24 +18,37 @@ class OrganizationCell: UITableViewCell {
 
     @IBOutlet var ratingView: UIView!
     @IBOutlet var ratingLabel: UILabel!
-    
+
     @IBOutlet var positiveView: UIView!
     @IBOutlet var positiveLabel: UILabel!
-    
+
     @IBOutlet var negativeView: UIView!
     @IBOutlet var negativeLabel: UILabel!
-    
+
+
+    @IBOutlet var favoriteButton: UIButton!
+
+    @IBOutlet var watchButton: UIButton!
 
   var json: JSON = nil {
       didSet {
-        print("yoyoyo")
-        self.orgNameLabel.text="FTHIS"
-
-        self.ratingLabel.text="0stars"
-        self.orgNameLabel.text="FTHIS"
-        self.positiveLabel.text="26 positive shouts"
-        self.negativeLabel.text="305 negative shouts"
+        self.orgNameLabel.text = json["name"].string!
+        self.ratingLabel.text  = "Shout score: \(json["rating"].int!)!"
+        self.positiveLabel.text = "\(json["positive_count"].int!) positive reviews"
+        self.negativeLabel.text = "\(json["negative_count"].int!) negative reviews"
       }
 
   }
+
+    @IBAction func onFavorite(_ sender: Any) {
+        print("on favorite..")
+    }
+
+    @IBAction func onFollow(_ sender: Any) {
+        print("on follow..")
+
+    }
+
+
+
 }

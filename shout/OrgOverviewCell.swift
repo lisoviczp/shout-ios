@@ -17,8 +17,10 @@ class OrgOverviewCell: UITableViewCell {
 
   var json: JSON = nil {
       didSet {
-        // print("setting ORGOVERVIEW CELL: \(json)")
+        print("setting ORGOVERVIEW CELL: \(json)")
+          print(json)
          self.orgNameLabel.text = json["name"].string!
+
       }
 
   }

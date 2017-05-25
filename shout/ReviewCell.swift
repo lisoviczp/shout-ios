@@ -22,10 +22,12 @@ class ReviewCell: UITableViewCell {
 
     var json: JSON = nil {
         didSet {
-          self.orgNameLabel.text = "YO ORG NAME"
-          self.reviewLabel.text = "0stars"
-          self.reviewBodyLabel.text = "yothisplacesucksyothisplacesucksyothisplacesucksyothisplacesucksyothisplacesucksyothisplacesucks"
-          self.usernameLabel.text = "phillslife"
+          // print("From cell...")
+          // print(json)
+          self.orgNameLabel.text = json["company"]["name"].string!
+          self.reviewLabel.text = "\(json["review_rating"].int!)"
+          self.reviewBodyLabel.text = json["body"].string!
+          self.usernameLabel.text = json["user"]["username"].string!
         }
 
     }

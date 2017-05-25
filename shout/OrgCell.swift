@@ -16,6 +16,7 @@ class OrgCell: UITableViewCell {
   var json: JSON = nil {
       didSet {
         print("setting ORG CELL")
+        print(json)
         // self.orgNameLabel.text = "YO ORG NAME"
       }
 

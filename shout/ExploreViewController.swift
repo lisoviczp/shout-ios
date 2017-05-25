@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 import FontAwesomeKit
 
-class ExploreViewController: UIViewController, UITableViewDelegate, UITextViewDelegate, UITableViewDataSource, UINavigationControllerDelegate  {
+class ExploreViewController: UIViewController, UITableViewDelegate, UITextFieldDelegate, UITableViewDataSource, UINavigationControllerDelegate  {
 
 
     @IBOutlet var tableView: UITableView!
@@ -49,16 +49,18 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITextViewDe
 
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return Shout.session.companies.count
     }
 
 
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("Trying to set orgCell..")
-        self.sampleJSON["body"] = "ayy whassup OrgCell"
-        let cellJSON = self.sampleJSON
-
+        let cellJSON = Shout.session.companies[indexPath.row]
         var orgCell = Bundle(for:object_getClass(self)).loadNibNamed("OrganizationCell", owner: nil, options: nil)![0] as! OrganizationCell
         orgCell.layoutMargins = UIEdgeInsets.zero
         orgCell.json = cellJSON
@@ -68,6 +70,10 @@ class ExploreViewController: UIViewController, UITableViewDelegate, UITextViewDe
 
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+      // let cellJSON = Shout.session.companies[indexPath.row]
+      let cell = tableView.cellForRow(at: indexPath) as? OrganizationCell
+      self.performSegue(withIdentifier: "organizationSegue", sender: cell)
+
     }
 
 

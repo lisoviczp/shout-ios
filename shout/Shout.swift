@@ -107,6 +107,10 @@ struct Shout {
 class ShoutSession {
     var user: JSON = nil
     var companies: [JSON] = []
+    var allReviews: [JSON] = []
+    var relevantReviews: [JSON] = []
+    var reviewReasons: [JSON] = []
+    var reviewCategories: [JSON] = []
 
     func clear() {
 
@@ -131,8 +135,50 @@ class ShoutClient {
        self.manager = SessionManager(configuration: configuration)
     }
 
+    func getAllReviews(_ handler: @escaping (JSON) -> Void) {
+        self.manager.request("\(Shout.host)/api/get_all_reviews",
+            parameters: nil)
+            .response(
+                 queue: DispatchQueue.main,
+                 responseSerializer: DataRequest.jsonResponseSerializer(),
+                 completionHandler: { (response) in
+                     var responseJSON: JSON
+                     if response.result.isFailure {
+                         responseJSON = JSON.null
+                     } else {
+                         responseJSON = SwiftyJSON.JSON(response.result.value!)
+                     }
+                     DispatchQueue.main.async {
+                       handler(responseJSON)
+
+                     }
+                 }
+             )
+    }
+
+    func getRelevantReviews(_ handler: @escaping (JSON) -> Void) {
+        self.manager.request("\(Shout.host)/api/get_relevant_reviews",
+            parameters: nil)
+            .response(
+                 queue: DispatchQueue.main,
+                 responseSerializer: DataRequest.jsonResponseSerializer(),
+                 completionHandler: { (response) in
+                     var responseJSON: JSON
+                     if response.result.isFailure {
+                         responseJSON = JSON.null
+                     } else {
+                         responseJSON = SwiftyJSON.JSON(response.result.value!)
+                     }
+                     DispatchQueue.main.async {
+                       handler(responseJSON)
+
+                     }
+                 }
+             )
+    }
+
+
     func getCompanies(_ handler: @escaping (JSON) -> Void) {
-        print("calling getCompanies")
         self.manager.request("\(Shout.host)/api/get_companies",
             parameters: nil)
             .response(
@@ -151,21 +197,43 @@ class ShoutClient {
                      }
                  }
              )
-        print("donecalling get companies...?")
+    }
+
+
+    func getReviewOptions(_ handler: @escaping (JSON) -> Void) {
+        print("calling getReviewOptions")
+        self.manager.request("\(Shout.host)/api/get_review_options",
+            parameters: nil)
+            .response(
+                 queue: DispatchQueue.main,
+                 responseSerializer: DataRequest.jsonResponseSerializer(),
+                 completionHandler: { (response) in
+                     var responseJSON: JSON
+                     if response.result.isFailure {
+                         responseJSON = JSON.null
+                     } else {
+                         responseJSON = SwiftyJSON.JSON(response.result.value!)
+                     }
+                     DispatchQueue.main.async {
+                       handler(responseJSON)
+
+                     }
+                 }
+             )
+        print("donecalling get reviewoptions...?")
     }
 
 
 
-    func createActivity(_ body: String, activity_date: String, publicBool: Bool, tag_id: Int, tag2_id: Int, goal_id: Int, location_string: String, handler: @escaping (JSON) -> Void) {
-        self.manager.request("\(Shout.host)/api/create_activity", method: .post,
+    func createReview(_ body: String, company_id: Int, review_rating: Int, review_reason_id: Int, review_category_id: Int, handler: @escaping (JSON) -> Void) {
+        print("ayy wtf..")
+        self.manager.request("\(Shout.host)/api/create_review", method: .post,
             parameters: [
                 "body": body,
-                "activity_date": activity_date,
-                "public": publicBool,
-                "mobile_activitytag_id": tag_id,
-                "mobile_activitytag2_id": tag2_id,
-                "mobile_goal_id": goal_id,
-                "location_string": location_string,
+                "company_id": company_id,
+                "review_rating": review_rating,
+                "review_reason_id": review_reason_id,
+                "review_category_id": review_category_id,
             ]
             )
             .response(
